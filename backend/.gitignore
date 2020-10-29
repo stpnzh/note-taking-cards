@@ -1,0 +1,6 @@
+*.pyc
+.vscode/
+
+db.sqlite3
+
+project/settings.py
