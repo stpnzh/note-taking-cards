@@ -2,20 +2,24 @@ from django.db import models
 from django.utils.timezone import now
 
 
-class Note(models.Model):
-  category = models.CharField(max_length=200)
-  description = models.TextField()
-  code = models.TextField()
-  pub_date = models.DateTimeField('date published', default=now)
-
-  def __str__(self):
-    return self.description
-  
 
 class Tag(models.Model):
-  note = models.ForeignKey(Note, on_delete=models.CASCADE)
-  tag = models.CharField(max_length=200)
+  text = models.CharField(max_length=200)
 
   def __str__(self):
-    return self.tag
+    return self.text
+
+
+class Note(models.Model):
+  cat = models.CharField(max_length=200)
+  desc = models.TextField()
+  content = models.TextField()
+  pub_date = models.DateTimeField('date published', default=now)
+  tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
+
+  def __str__(self):
+    return self.desc
+  
+
+
   
